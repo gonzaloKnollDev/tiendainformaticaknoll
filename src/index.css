@@ -22,11 +22,18 @@ code {
 }
 
 .greeting{
-  width:130px;
-  border: 2px;
-  border-color: dimgrey;
+  font-size: medium;
+  width:250px;
+  border: 2px solid;
   border-radius: 20px;
-  background-color: blue;
+  border-color: blueviolet;
   margin-top: 20px;
+  margin-left:20px;
   justify-content: right;
+  padding: 5px;
+  box-shadow: 0px 0px 20px black;
+}
+
+.placas{
+  width: 200px;
 }
