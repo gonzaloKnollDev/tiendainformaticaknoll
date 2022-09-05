@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 export const ItemList = ({producto})=>{
     const [productos,setProductos]= useState([]);
+    
     const obtenerProductos=()=>{       
         return new Promise((resolve,reject)=>{
                 setTimeout(()=>{
@@ -13,28 +14,25 @@ export const ItemList = ({producto})=>{
             })
         } 
 
-        useEffect(()=>{
-            const FuncionAsincronica = async()=>{
-                try{
-                    const listado = await obtenerProductos();
-                    setProductos(listado);
-                } catch (error){
-                    console.log("hubo un error")
-                }
+    useEffect(()=>{
+        const FuncionAsincronica = async()=>{
+            try{
+                const listado = await obtenerProductos();
+                setProductos(listado);
+            } catch (error){
+                console.log("hubo un error")
             }
-            FuncionAsincronica();
-        },[])
+        }
+        FuncionAsincronica();
+    },[])
 
 
-        return(       
-            <div className="greeting">
-                    {productos.length>0 &&
-                    <>
-                    <img src={producto.imagen} className={'placas'}/>
-                    {producto.greeting}
-                    <ItemCount stock={10} initial={0} onAdd={producto.agregarProducto}/>
-                    </>
-                    }
-            </div>
-            ) 
+    return(          
+        <div className="greeting">
+            <img src={productos.imagen} className={'placas'}/>
+            <br></br>
+            {productos.greeting}
+            <ItemCount stock={producto.stock} initial={0} onAdd={productos.agregarProducto}/>
+        </div>
+        )
     }
